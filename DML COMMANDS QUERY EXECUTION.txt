@@ -1,0 +1,114 @@
+Q1: Insert a single record into dept table.
+
+Ans: SQL> insert into dept values (1,'IT','Tholudur'); 1 row created.
+Q2: Insert more than a record into emp table using a single insert command. Ans: SQL> insert into emp values(&empno,'&ename','&job',&deptno,&sal); Enter value for empno: 1
+Enter value for ename: Mathi Enter value for job: AP
+Enter value for deptno: 1 Enter value for sal: 10000
+old 1: insert into emp values(&empno,'&ename','&job',&deptno,&sal)
+ 
+new 1: insert into emp values(1,'Mathi','AP',1,10000) 1 row created.
+SQL> / Enter value for empno: 2 Enter value for ename: Arjun Enter value for job: ASP
+Enter value for deptno: 2 Enter value for sal: 12000
+old 1: insert into emp values(&empno,'&ename','&job',&deptno,&sal) new 1: insert into emp values(2,'Arjun','ASP',2,12000)
+1 row created.
+
+
+SQL> / Enter value for empno: 3 Enter value for ename: Gugan Enter value for job: ASP
+Enter value for deptno: 1 Enter value for sal: 12000
+old 1: insert into emp values(&empno,'&ename','&job',&deptno,&sal) new 1: insert into emp values(3,'Gugan','ASP',1,12000)
+1 row created.
+
+
+Q3: Update the emp table to set the salary of all employees to Rs15000/- who are working as ASP
+Ans: SQL> select * from emp; EMPNO ENAME JOB DEPTNO SAL
+
+
+1	Mathi AP 1 10000
+
+2	Arjun ASP 2 12000
+
+3	Gugan ASP 1 12000
+
+
+ 
+SQL> update emp set sal=15000 where job='ASP'; 2 rows updated. SQL> select * from emp;
+EMPNO ENAME JOB DEPTNO SAL
+
+1	Mathi AP 1 10000
+
+2	Arjun ASP 2 15000
+
+3	Gugan ASP 1 15000
+
+
+
+Q4: Create a pseudo table employee with the same structure as the table emp and insert rows into the table using select clauses.
+Ans: SQL> create table employee as select * from emp; Table created.
+SQL> desc employee;
+
+Name Null? Type
+EMPNO NUMBER(6)
+ENAME NOT NULL VARCHAR2(20) JOB NOT NULL VARCHAR2(13) DEPTNO NUMBER(3)
+SAL NUMBER(7,2)
+
+
+Q5: select employee name, job from the emp table Ans: SQL> select ename, job from emp;
+ENAME JOB
+Mathi AP Arjun ASP Gugan ASP Karthik Prof Akalya AP suresh lect
+6 rows selected.
+ 
+Q6: Delete only those who are working as lecturer Ans: SQL> select * from emp;
+EMPNO ENAME JOB DEPTNO SAL
+
+1	Mathi AP 1 10000
+2	Arjun ASP 2 15000
+3	Gugan ASP 1 15000
+4	Karthik Prof 2 30000
+5	Akalya AP 1 10000
+6	suresh lect 1 8000
+6 rows selected.
+
+
+SQL> delete from emp where job='lect'; 1 row deleted.
+SQL> select * from emp;
+EMPNO ENAME JOB DEPTNO SAL
+-
+1	Mathi AP 1 10000
+2	Arjun ASP 2 15000
+3	Gugan ASP 1 15000
+4	Karthik Prof 2 30000
+5	Akalya AP 1 10000
+
+
+Q7: List the records in the emp table orderby salary in ascending order. Ans: SQL> select * from emp order by sal;
+EMPNO ENAME JOB DEPTNO SAL
+
+1 Mathi AP 1 10000
+5 Akalya AP 1 10000
+2	Arjun ASP 2 15000
+3	Gugan ASP 1 15000
+4	Karthik Prof 2 30000
+
+
+Q8: List the records in the emp table orderby salary in descending order. Ans: SQL> select * from emp order by sal desc;
+EMPNO ENAME JOB DEPTNO SAL
+
+4 Karthik Prof 2 30000
+2Arjun ASP 2 15000
+3Gugan ASP 1 15000
+1 Mathi AP 1 10000
+5 Akalya AP 1 10000
+ 
+Q9: Display only those employees whose deptno is 30. Solution: Use SELECT FROM WHERE syntax.
+Ans: SQL> select * from emp where deptno=1; EMPNO ENAME JOB DEPTNO SAL
+
+1 Mathi AP 1 10000
+3 Gugan ASP 1 15000
+5 Akalya AP 1 10000
+
+
+Q10: Display deptno from the table employee avoiding the duplicated values. Solution:
+1.	Use SELECT FROM syntax.
+2.	Select should include distinct clause for the deptno. Ans: SQL> select distinct deptno from emp; DEPTNO
+
+

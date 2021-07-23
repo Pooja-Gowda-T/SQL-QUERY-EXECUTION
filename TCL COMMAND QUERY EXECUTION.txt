@@ -1,0 +1,68 @@
+**TCL COMMANDS**
+
+Queries:
+
+Tables Used: Consider the following tables namely “DEPARTMENTS” and “EMPLOYEES”
+Their schemas are as follows , Departments ( dept _no , dept_ name , dept_location ); Employees ( emp_id , emp_name , emp_salary );
+Q1: Develop a query to grant all privileges of employees table into departments table Ans: SQL> Grant all on employees to departments;
+Grant succeeded.
+
+Q2: Develop a query to grant some privileges of employees table into departments table
+Ans: SQL> Grant select, update , insert on departments to departments with grant option; Grant succeeded.
+
+Q3: Develop a query to revoke all privileges of employees table from departments table Ans: SQL> Revoke all on employees from departments; Revoke succeeded.
+Q4: Develop a query to revoke some privileges of employees table from departments table Ans: SQL> Revoke select, update , insert on departments from departments;
+Revoke succeeded.
+ 
+Q5: Write a query to implement the save point Ans: SQL> SAVEPOINT S1;
+Savepoint created.
+
+
+SQL> select * from emp;
+
+EMPNO ENAME JOB DEPTNO SAL
+
+1	Mathi AP 1 10000
+
+2	Arjun ASP 2 15000
+
+3	Gugan ASP 1 15000
+
+4	Karthik Prof 2 30000
+
+
+
+SQL> INSERT INTO EMP VALUES(5,'Akalya','AP',1,10000); 1 row created.
+
+SQL> select * from emp;
+
+EMPNO ENAME JOB DEPTNO SAL
+
+1	Mathi AP 1 10000
+
+2	Arjun ASP 2 15000
+
+3	Gugan ASP 1 15000
+
+4	Karthik Prof 2 30000
+
+5	Akalya AP 1 10000
+
+
+Q6: Write a query to implement the rollback
+
+Ans: SQL> rollback s1; SQL> select * from emp; EMPNO ENAME JOB DEPTNO SAL
+
+
+1	Mathi AP 1 10000
+
+2	Arjun ASP 2 15000
+
+3	Gugan ASP 1 15000
+
+4	Karthik Prof 2 30000
+
+ 
+Q6: Write a query to implement the commit Ans: SQL> COMMIT;
+Commit complete.
+

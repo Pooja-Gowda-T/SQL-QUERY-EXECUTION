@@ -1,0 +1,49 @@
+*** AGGREGATE FUNCTIONS ***
+
+1.SELECT 
+    COUNT(*)
+FROM
+    products;
+
+
+2.AVG function example
+SELECT 
+    AVG(unitsinstock)
+FROM
+    products;
+
+SELECT 
+    categoryid, AVG(unitsinstock)
+FROM
+    products
+GROUP BY categoryid;
+SQL avg with group by
+
+
+3.SUM function example
+To calculate the sum of units in stock by product category, you use the SUM function with the  GROUP BY clause as the following query:
+
+SELECT 
+    categoryid, SUM(unitsinstock)
+FROM
+    products
+GROUP BY categoryid;
+
+
+4. MIN function example
+To get the minimum units in stock of products in the products table, you use the MIN function as follows:
+
+SELECT 
+    MIN(unitsinstock)
+FROM
+    products;
+
+
+5.MAX function example
+To get the maximum units in stock of products in the products table, you use the MAX function as shown in the following query:
+
+SELECT 
+    MAX(unitsinstock)
+FROM
+    products;
+SQL MAX function example

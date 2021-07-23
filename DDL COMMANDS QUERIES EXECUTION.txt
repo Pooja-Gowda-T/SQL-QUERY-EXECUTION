@@ -1,0 +1,45 @@
+****DDL COMMANDS*****
+
+QUERIES EXECUTION WITH DDL COMMANDS
+
+Q1. Create a table called EMP with the following structure. Name Type
+
+EMPNO NUMBER(6) ENAME VARCHAR2(20) JOB VARCHAR2(10) DEPTNO NUMBER(3) SAL NUMBER(7,2)
+Allow NULL for all columns except ename and job.
+Ans:
+SQL> create table emp(empno number(6),ename varchar2(20)not null,job varchar2(10) not null, deptno number(3),sal number(7,2));
+Table created
+
+Q2: Add a column experience to the emp table. experience numeric null allowed.
+Ans: SQL> alter table emp add(experience number(2)); Table altered.
+
+
+Q3: Modify the column width of the job field of emp table.
+Ans: SQL> alter table emp modify(job varchar2(12)); Table altered.
+
+
+SQL> alter table emp modify(job varchar(13)); 
+Table altered.
+
+Q4: Create dept table with the following structure. Name Type
+DEPTNO NUMBER(2) DNAME VARCHAR2(10) LOC VARCHAR2(10)
+Deptno as the primarykey
+Ans:
+SQL> create table dept(deptno number(2) primary key,dname varchar2(10),loc varchar2(10));
+Table created.
+
+
+Q5: create the emp1 table with ename and empno, add constraints to check the empno value while entering (i.e) empno > 100
+Ans:
+SQL> create table emp1(ename varchar2(10),empno number(6) constraint check(empno>100));
+Table created.
+
+
+Q6: drop a column experience to the emp table.
+Ans:
+SQL> alter table emp drop column experience; Table altered.
+
+
+Q7: Truncate the emp table and drop the dept table
+Ans: SQL> truncate table emp; Table truncated.
+
